@@ -1,0 +1,50 @@
+{
+  "name": "@intech.lu/eslint-config-angular",
+  "version": "1.0.0",
+  "description": "ESLint rules for InTech Angular projects",
+  "keywords": [
+    "style guide",
+    "lint",
+    "eslint",
+    "prettier",
+    "format",
+    "intech",
+    "angular"
+  ],
+  "author": "InTech S.A. <equipe.titane@intech.lu> (https://www.intech.lu)",
+  "contributors": [
+    {
+      "name": "Tristan Chaumont",
+      "email": "tristan.chaumont@intech.lu"
+    },
+    {
+      "name": "Loïc Gasiorowski",
+      "email": "loic.gasiorowski@intech.lu"
+    },
+    {
+      "name": "Silvio Brancati",
+      "email": "silvio.brancati@intech.lu"
+    },
+    {
+      "name": "Jacques Vernay",
+      "email": "jacques.vernay@intech.lu"
+    }
+  ],
+  "repository": "github:intech-lu/eslint-config-angular",
+  "homepage": "github:intech-lu/eslint-config-angular",
+  "license": "MIT",
+  "files": [
+    "eslint.config.mjs"
+  ],
+  "main": "eslint.config.mjs",
+  "dependencies": {
+    "angular-eslint": "^20.3.0",
+    "@intech.lu/eslint-config": "1.0.0"
+  },
+  "peerDependencies": {
+    "eslint": "^9.35.0"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  }
+}
