@@ -1,6 +1,6 @@
 import angular from 'angular-eslint';
-import eslintConfig from '@intech.lu/eslint-config';
 import { defineConfig } from 'eslint/config';
+import eslintConfig from '@intech.lu/eslint-config';
 
 export default defineConfig(
   ...eslintConfig,
