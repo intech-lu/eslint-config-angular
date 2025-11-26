@@ -1,5 +1,5 @@
 default:
-  image: node:20-alpine
+  image: node:24.11.1-alpine
   tags:
     - cluster
 
