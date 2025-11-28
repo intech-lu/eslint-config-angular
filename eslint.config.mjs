@@ -11,15 +11,9 @@ export default defineConfig(
     ],
     processor: angular.processInlineTemplates,
     rules: {
-      // @angular-eslint already has a rule for this but only allows 
-      // "Component" suffixes. This rule adds support for "Page" 
-      // and "Modal" suffixes.
-      '@angular-eslint/component-class-suffix': [
-        'error',
-        {
-          suffixes: ['Component', 'Page', 'Modal'],
-        },
-      ],
+      // As of Angular 20, adding component class suffixes is no longer recommended by the
+      // Angular team.
+      '@angular-eslint/component-class-suffix': 'off',
       // Kebab case is the recommended way to name Angular components,
       // so we want to enforce this naming convention.
       // https://angular.dev/style-guide#component-selectors
