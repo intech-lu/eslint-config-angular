@@ -1,6 +1,6 @@
 {
   "name": "@intech.lu/eslint-config-angular",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "ESLint rules for InTech Angular projects",
   "keywords": [
     "style guide",
@@ -41,13 +41,13 @@
   ],
   "main": "eslint.config.mjs",
   "dependencies": {
-    "angular-eslint": "^21.0.1",
-    "@intech.lu/eslint-config": "1.1.0"
+    "angular-eslint": "^21.1.0",
+    "@intech.lu/eslint-config": "1.1.1"
   },
   "peerDependencies": {
-    "eslint": "^9.39.1"
+    "eslint": "^9.39.2"
   },
   "engines": {
-    "node": ">=24.11.1"
+    "node": ">=24.12.0"
   }
 }
