@@ -10,9 +10,6 @@ Welcome to the "InTech Angular ESLint rules" repository, a centralized solution 
     3. [Step 2: install ESLint and the InTech rules](#2️⃣-step-2-install-eslint-and-the-intech-rules)
     4. [Step 3: create the ESLint configuration](#3️⃣-step-3-create-the-eslint-configuration)
     5. [Step 4: enjoy 🎉](#4️⃣-step-4-enjoy-🎉)
-2. [Contribute](#🤝-contribute)
-    1. [Development](#💻-development)
-    2. [Deployment](#🚀-deployment)
 
 ## ⚙️ Installation
 
@@ -20,29 +17,29 @@ Add the InTech Angular ESLint rules on your existing project.
 
 ### 📋 Requirements
 
-- NPM version >= 9
-- Node.js version >= `18.18.0`
-- Angular version >= `18.0.0`
-
-#### Supported versions
-
-| Angular            | InTech Angular ESLint |
-| ------------------ | --------------------- |
-| >= 18.0.0          | >= 2.0.0              |
-| < 18.0.0           | >=1.0.0 <2.0.0        |
+- Node.js version >= `24.18.0`
+- Angular version >= `22.0.0`
 
 ### 1️⃣ Step 1: install the ESLint extension for VSCode
 
 - <https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint>
 
-Create a `.vscode/settings.json` file with the following configuration at the root of your project:
+Create a `.vscode/settings.json` file with the following configuration at the root of your project to enable ESLint auto-fix on save:
 
 ```json
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "eslint.validate": ["javascript", "typescript", "html"]
+}
+```
+
+Create a `.vscode/extensions.json` file with the following configuration at the root of your project to recommend the ESLint extension to your team members:
+
+```json
+{
+  "recommendations": ["dbaeumer.vscode-eslint"]
 }
 ```
 
@@ -51,10 +48,8 @@ Create a `.vscode/settings.json` file with the following configuration at the ro
 Go to the folder of your project and execute the following command:
 
 ```bash
-npm install -D eslint '@intech.lu/eslint-config-angular'
+npm install -D eslint '@intech.lu/eslint-config-angular'@latest
 ```
-
-Note: *You'll have to install ESLint at least version 9 as it includes breaking changes and reworks the way ESLint is executed.*
 
 ### 3️⃣ Step 3: create the ESLint configuration
 
@@ -62,25 +57,45 @@ At the root of your project, create an `eslint.config.mjs` file with the followi
 
 ```js
 import eslintConfig from '@intech.lu/eslint-config-angular';
+import { defineConfig } from 'eslint/config';
 
-export default [ 
+export default defineConfig( 
   ...eslintConfig,
-];
+  {
+    files: ['**/*.ts'],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  }
+);
 ```
 
 If you need to override the InTech rules for some reason, simply do it by adding rules in your `eslint.config.mjs`, it will override the InTech related ones:
 
 ```js
 import eslintConfig from '@intech.lu/eslint-config-angular';
+import { defineConfig } from 'eslint/config';
 
-export default [ 
+export default defineConfig( 
   ...eslintConfig,
+  {
+    files: ['**/*.ts'],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
   {
     rules: {
       'no-console': 'error', // will switch InTech 'no-console' rule value from 'warn' to 'error'
     }
   },
-];
+);
 ```
 
 ⚠️ *NB: You should always override InTech rules after destructuring `eslintConfig`, otherwise `eslintConfig` will take precedence and override the rules you've just added.*
