@@ -40,7 +40,10 @@ export default defineConfig(
       // However, we want to allow empty constructors, as they are common in Angular
       // for dependency injection (when not using inject() method) or to inject
       // data in modal components.
-      'no-empty-function': ['error', { allow: ['constructors'] }],
+      '@typescript-eslint/no-empty-function': [
+        'error',
+        { allow: ['constructors'] },
+      ],
       // Members are public by default in TypeScript classes, so we
       // don't need to explicitly declare them as public.
       '@typescript-eslint/explicit-member-accessibility': [
@@ -93,6 +96,9 @@ export default defineConfig(
       ...angular.configs.templateAll,
     ],
     rules: {
+      // The templateAll preset also enables no-inline-styles, which rejects both
+      // [ngStyle] and the [style] replacement suggested by this rule.
+      '@angular-eslint/template/prefer-style-binding': 'off',
       // Even if it's not considered a good practice, it really too handy to call expressions
       // in Angular templates and reduce the amount of logic in the component class.
       '@angular-eslint/template/no-call-expression': 'off',

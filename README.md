@@ -17,7 +17,7 @@ Add the InTech Angular ESLint rules on your existing project.
 
 ### 📋 Requirements
 
-- Node.js version >= `24.18.0`
+- Node.js version >= `24.20.0`
 - Angular version >= `22.0.0`
 
 ### 1️⃣ Step 1: install the ESLint extension for VSCode
